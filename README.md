@@ -49,6 +49,14 @@ curl -X POST http://localhost:3000/publish \
 6) Verify health: visit `https://your-domain/health` and expect `{ "ok": true }`.
 7) If websockets are blocked, Socket.IO will automatically fall back to polling.
 
+## Test dashboard
+- A minimal web UI is available at `/dashboard.html` (served from this app).
+- Steps:
+  1) Obtain a JWT signed with the same `JWT_SECRET` as the server.
+  2) Open `https://your-domain/dashboard.html`.
+  3) Paste the token, choose a channel (e.g., `demo`), click Connect, then Subscribe.
+  4) Publish JSON messages and watch them arrive in the log. Connection errors will show as failed in the log.
+
 ## How to use (sockets and REST)
 - Connect (frontend JS):
 ```html

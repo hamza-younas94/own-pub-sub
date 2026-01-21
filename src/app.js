@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -12,6 +13,7 @@ function createApp(httpServer) {
   app.use(helmet({ crossOriginResourcePolicy: false }));
   app.use(cors({ origin: corsOrigin, methods: ['GET', 'POST', 'OPTIONS'] }));
   app.use(express.json());
+  app.use(express.static(path.join(__dirname, '..', 'public')));
 
   const io = new Server(httpServer, {
     cors: { origin: corsOrigin, methods: ['GET', 'POST'] },
